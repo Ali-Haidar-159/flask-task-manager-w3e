@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        #homeBtn{
+            display: block;
+            margin: 25px auto;
+            text-decoration: none;
+            color: green;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        form{
+            padding: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>➕ Add New Task</h2>
+
+    <form method="POST" action="/api/tasks">
+
+        <label>Title *</label>
+        <input type="text" name="title" required>
+
+        <label>Description</label>
+        <textarea name="description" rows="4"></textarea>
+
+        <label>Status</label>
+        <select name="status">
+            <option value="todo">Todo</option>
+            <option value="in_progress">In Progress</option>
+            <option value="done">Done</option>
+        </select>
+
+        <label>Due Date</label>
+        <input type="date" name="due_date">
+
+        <button type="submit">Save Task</button>
+        <a id="homeBtn" href="/">Go To Home</a>
+
+    </form>
+</div>
+
+</body>
+</html>

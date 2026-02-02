@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Added</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f7;
+        }
+        .message-box {
+            background-color: #fff;
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .message-box h1 {
+            color: #106e37;
+            margin-bottom: 20px;
+        }
+        .task-details {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        .task-details p {
+            margin: 5px 0;
+        }
+        .home-button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .home-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-box">
+        <h1>Task Added Successfully!</h1>
+        
+        <div class="task-details">
+            <p><strong>Title:</strong> {{ task.title }}</p>
+            <p><strong>Description:</strong> {{ task.description }}</p>
+            <p><strong>Status:</strong> {{ task.status }}</p>
+            <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+            <p><strong>Created At:</strong> {{ task.created_at }}</p>
+        </div>
+
+        <a href="/" class="home-button">Go to Home Page</a>
+    </div>
+
+</body>
+</html>
