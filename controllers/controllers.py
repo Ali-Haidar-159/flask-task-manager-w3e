@@ -1,6 +1,7 @@
 # import all the packages 
 
 from flask import request,jsonify,render_template
+from config.logger import logger
 
 from config.db import db
 from models.db_model import Single_Task
@@ -11,6 +12,7 @@ from models.db_model import Single_Task
 
 def tasks():
     if request.method == "GET":
+        log("GET /api/tasks called")
         status = request.args.get("status")
         q = request.args.get("q")
         sort = request.args.get("sort")
@@ -34,6 +36,7 @@ def tasks():
 
     else:
         # POST request: use keyword arguments
+        log("POST /api/tasks called")
         title = request.form.get("title")
         description = request.form.get("description")
         status = request.form.get("status", "todo")
@@ -56,10 +59,12 @@ def tasks():
 # get a specifc task base on it's id 
 
 def specific_task(id):
+    log(f"{request.method} /api/tasks/{id} called")
 
     specificTask = Single_Task.query.filter_by(id=id).first()
 
     if not specificTask:
+        log(f"Task {id} not found")
         return jsonify({"error": "Task not found"}), 404
 
     if request.method == "GET" :
@@ -68,6 +73,7 @@ def specific_task(id):
         "value": specificTask.to_dict()
         })
     elif request.method == "DELETE":
+        log(f"Task {id} deleted")
         
         db.session.delete(specificTask)
         db.session.commit()
@@ -83,9 +89,12 @@ def specific_task(id):
 # update a specific task based on its id
 
 def update_task(id):
+    log(f"PUT /api/tasks/{id} called")
+    
     specificTask = Single_Task.query.filter_by(id=id).first()
 
     if not specificTask:
+        log(f"Task {id} not found for update")
         return jsonify({"error": "Task not found"}), 404
 
     # Get JSON data from request
@@ -102,6 +111,8 @@ def update_task(id):
         specificTask.due_date = data['due_date']
     
     db.session.commit()
+
+    log(f"Task {id} updated")
 
     return jsonify({
         "success": True,
