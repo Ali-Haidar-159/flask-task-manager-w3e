@@ -4,20 +4,6 @@ A full-stack Task Manager application built with Flask, PostgreSQL (Docker), and
 
 ---
 
-##  Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Prerequisites](#prerequisites)
-- [Project Structure](#project-structure)
-- [Installation & Setup](#installation--setup)
-- [Database Setup](#database-setup)
-- [Running the Application](#running-the-application)
-- [API Endpoints](#api-endpoints)
-- [Troubleshooting](#troubleshooting)
-
----
-
 ## Features
 
 - Create new tasks with title, description, status, and due date
@@ -113,11 +99,6 @@ pip install psycopg2-binary
 pip install python-dotenv
 ```
 
-**Alternative**: If you have a `requirements.txt` file:
-
-```bash
-pip install -r requirements.txt
-```
 
 ### Step 4: Create Environment File
 
@@ -127,9 +108,6 @@ Create a `.env` file in the project root directory with the following content:
 # PostgreSQL Database Configuration
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/pythondb
 
-# Flask Configuration
-FLASK_APP=app.py
-FLASK_ENV=development
 ```
 
 **Environment Variables Explanation**:
@@ -141,7 +119,7 @@ FLASK_ENV=development
 
 ---
 
-## 🗄 Database Setup
+##  Database Setup
 
 ### Step 1: Start PostgreSQL Container
 
@@ -228,7 +206,7 @@ flask run
 python3 app.py
 ```
 
-### Step 4: Access the Application
+### Step 4: Access the Application (UI)
 
 Open your web browser and navigate to:
 
@@ -329,7 +307,7 @@ curl -X DELETE http://127.0.0.1:5000/api/tasks/1
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Issue 1: "flask: command not found"
 
@@ -367,25 +345,7 @@ docker start postgres-db
 python3 init_db.py
 ```
 
-### Issue 4: Port 5000 already in use
-
-**Solution**: Either:
-
-1. Kill the process using port 5000:
-```bash
-# Find process
-lsof -i :5000
-
-# Kill it
-kill -9 <PID>
-```
-
-2. Or run Flask on a different port:
-```bash
-flask run --port 5001
-```
-
-### Issue 5: Docker container not starting
+### Issue 4: Docker container not starting
 
 **Solution**: Check Docker logs
 
