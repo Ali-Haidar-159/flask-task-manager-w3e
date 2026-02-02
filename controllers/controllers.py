@@ -1,7 +1,7 @@
 # import all the packages 
 
 from flask import request,jsonify,render_template
-from config.logger import logger
+from config.logger import log
 
 from config.db import db
 from models.db_model import Single_Task
