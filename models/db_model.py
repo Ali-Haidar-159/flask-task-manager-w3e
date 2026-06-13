@@ -10,6 +10,7 @@ class Single_Task(db.Model):
     status = db.Column(db.String(50), default="todo")
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     due_date = db.Column(db.Date, nullable=True)
+    
 
     def to_dict(self):
         return {
@@ -20,3 +21,4 @@ class Single_Task(db.Model):
             "created_at": self.created_at.isoformat(),
             "due_date": str(self.due_date) if self.due_date else None
         }
+        
